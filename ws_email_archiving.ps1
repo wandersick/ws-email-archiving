@@ -1,4 +1,4 @@
-# Journal Mailbox Archiving PowerShell Script for Exchange 2013
+# WS Email Archiving - Journal Mailbox Archiving PowerShell Script for Exchange 2013
 # Written by wandersick (https://wandersick.blogspot.com/2016/07/powershell-automation-of-journal.html)
 # Version: 1.2 (20171022)
 
