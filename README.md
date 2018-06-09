@@ -30,7 +30,7 @@ In case mail archiving has failed, script will send an alert mail and exit so th
 
 Note: This script was designed and tested for email messages of previous month, and has not been tested in other configurations but could still work with some tweaking. (In fact, it does not only work for journal mailbox.)
 
-## Getting Started – Script Usage and Instructions
+# Getting Started – Script Usage and Instructions
 
 1. Edit variable parameters as required ( **Refer to the script comment sections 1-4** )
 2. Save the script in a local folder e.g. C:\scripts\ws\_email\_archiving\_script.ps1
