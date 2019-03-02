@@ -2,11 +2,11 @@
 
 Recent Exchange versions have built-in support of journaling for recording all inbound and outbound email messages for backup or compliance reasons. Overtime, the journal mailbox grows so large and needs to be trimmed or pruned.
 
-This article documents a PowerShell maintenance script written for reporting and automating the monthly archive-to-PST process of the Exchange 2013 journaling mailbox.
+This article documents a PowerShell maintenance script written for reporting and automating the monthly archive-to-PST process of the Exchange 2013 journaling mailbox. (Based on reader feedback, it also suits Exchange 2016 Standard.)
 
 # Archiving Concept
 
-This script uses the PowerShell cmdlet _New-MailboxExportRequest -Mailbox &lt;journal mailbox&gt;_ to export Exchange 2013 Journaling Mailbox of previous month (e.g. 2016-01-01 to 2016-01-31) as a standard PST file (e.g. archive 2016\_01\_31.pst) to specified locations (up to two locations) and then uses _Search-Mailbox -DeleteContent_ to delete email messages within the date range if successful. It is designed to be run at the beginning of each month (e.g. 2/Feb/16) using Windows Task Scheduler.
+This script uses the PowerShell cmdlet _New-MailboxExportRequest -Mailbox &lt;journal mailbox&gt;_ to export Exchange Journaling Mailbox of previous month (e.g. 2016-01-01 to 2016-01-31) as a standard PST file (e.g. archive 2016\_01\_31.pst) to specified locations (up to two locations) and then uses _Search-Mailbox -DeleteContent_ to delete email messages within the date range if successful. It is designed to be run at the beginning of each month (e.g. 2/Feb/16) using Windows Task Scheduler.
 
 ## Email Alerting, Reporting and Logging
 
@@ -23,7 +23,7 @@ In case mail archiving has failed, script will send an alert mail and exit so th
 # Assumptions and Requirements
 
 - PowerShell 3.0 or above
-- Execute this script on Exchange 2013 server where (preferably):
+- Execute this script on Exchange server where (preferably):
   - System Locale is English (United States)
   - Short date format (for en-US) is MM/dd/yyyy
 - Sufficient disk space for storing PST files in the specified location(s)
