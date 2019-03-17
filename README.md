@@ -1,3 +1,5 @@
+**Note**: For download of the latest version, visit its [page at Microsoft TechNet Gallery](https://gallery.technet.microsoft.com/Exchange-2013-Journal-bc73817c).
+
 # Background
 
 Recent Exchange versions have built-in support of journaling for recording all inbound and outbound email messages for backup or compliance reasons. Overtime, the journal mailbox grows so large and needs to be trimmed or pruned.
