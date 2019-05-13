@@ -59,3 +59,11 @@ Start in:
 Alternatively, start the .ps1 script using a .bat script:
 
 - &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -PSConsoleFile &quot;C:\Program Files\Microsoft\Exchange Server\V15\Bin\exshell.psc1&quot; -command &quot;. &#39;C:\Program Files\Microsoft\Exchange Server\V15\Bin\Exchange.ps1&#39;; &amp;&#39;C:\scripts\ws\_email\_archiving\_script.ps1&#39;&quot;
+
+## Release History
+
+| Ver | Date | Changes |
+| --- | --- | --- |
+| 1.2 | 20171022 | - Turn journal mailbox name into a variable<br>- Further ensure New/Get-MailboxExportRequest job name uniqueness by naming it with current date time (in yyyyMMdd_hhmmsstt)<br>- Remove unused variables, scriptDir, startDateShort and endDateShort<br>- Improve script comments |
+| 1.1 | 20160712 | First public release |
+| 1.0 | 20160314 | First internal release |
