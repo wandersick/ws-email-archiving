@@ -4,7 +4,7 @@ Recent Exchange versions have built-in support of journaling for recording all i
 
 This article documents a PowerShell maintenance script written for reporting and automating the monthly archive-to-PST process of the Exchange 2013 journaling mailbox. (Based on reader feedback, it also suits Exchange 2016 Standard.)
 
-# Archiving Concept
+## Archiving Concept
 
 This script uses the PowerShell cmdlet _New-MailboxExportRequest -Mailbox &lt;journal mailbox&gt;_ to export Exchange Journaling Mailbox of previous month (e.g. 2016-01-01 to 2016-01-31) as a standard PST file (e.g. archive 2016\_01\_31.pst) to specified locations (up to two locations) and then uses _Search-Mailbox -DeleteContent_ to delete email messages within the date range if successful. It is designed to be run at the beginning of each month (e.g. 2/Feb/16) using Windows Task Scheduler.
 
@@ -20,7 +20,7 @@ In addition, a list of email messages returned from search and deleted by Search
 
 In case mail archiving has failed, script will send an alert mail and exit so that no mail deletion will occur. In technical terms, when status of _Get-MailboxExportRequest_ is not &quot;Completed&quot;, script keeps on waiting (looping) until it is complete. If the loop is broken or script receives any status other than &quot;Completed&quot;, execution will be terminated and failure will be reported by email.
 
-# Assumptions and Requirements
+## Assumptions and Requirements
 
 - PowerShell 3.0 or above
 - Execute this script on Exchange server where (preferably):
@@ -30,9 +30,9 @@ In case mail archiving has failed, script will send an alert mail and exit so th
 
 Note: This script was designed and tested for email messages of previous month, and has not been tested in other configurations but could still work with some tweaking. (In fact, it does not only work for journal mailbox.)
 
-# Getting Started
+## Getting Started
 
-## Script Usage and Instructions
+### Script Usage and Instructions
 
 1. Edit variable parameters as required ( **Refer to the script comment sections 1-4** )
 2. Save the script in a local folder e.g. C:\scripts\ws\_email\_archiving\_script.ps1
@@ -40,7 +40,7 @@ Note: This script was designed and tested for email messages of previous month, 
 
 For example, to export Jan 2016 email, running the script any day within Feb 2016 would do; the beginning of month is recommended (e.g. 2/Feb/16) .
 
-## Setting up Windows Task Scheduler
+### Setting up Windows Task Scheduler
 
 Program/script:
 
@@ -57,6 +57,12 @@ Start in:
 Alternatively, start the .ps1 script using a .bat script:
 
 - &quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -PSConsoleFile &quot;C:\Program Files\Microsoft\Exchange Server\V15\Bin\exshell.psc1&quot; -command &quot;. &#39;C:\Program Files\Microsoft\Exchange Server\V15\Bin\Exchange.ps1&#39;; &amp;&#39;C:\scripts\ws\_email\_archiving\_script.ps1&#39;&quot;
+
+## Word of Mouth
+
+Below is a kind comment left by an user of the script. (Thanks!)
+
+- "We have some very large journaling mailboxes that we’ve been racking our brains trying to figure out what to do with to stop the sprawl. We’re on Exchange 2016 Standard, so we’re limited on our database count. This script has made it really easy for us to dig out emails by month and save them off to PST that we can store out on second tier storage for archive. Thanks for this!"
 
 ## Release History
 
