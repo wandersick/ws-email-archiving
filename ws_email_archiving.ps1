@@ -1,6 +1,6 @@
 # WS Email Archiving - Journal Mailbox Archiving PowerShell Script for Exchange 2013
 # Written by wandersick (https://tech.wandersick.com/2016/07/powershell-automation-of-journal.html)
-# Version: 1.2 (20171022)
+# Version: 1.3 (20200614)
 
 # The default parameters of this script assume monthly exporting. See above URL for more information.
 
@@ -55,7 +55,7 @@ $archiveFilePath = $archiveFileDir + $archivefile
 # archiveFileDir2ndCopy = "\\FileServer\Archive_PST\Secondary_Backup\"
 # archiveFilePath2ndCopy = "\\FileServer\Archive_PST\Secondary_Backup\archive 2016_01_31.pst"
 
-$archiveEnable2ndCopy = $true
+$archiveEnable2ndCopy = $false
 $archiveFileDir2ndCopy = "\\FileServer\Archive_PST\Secondary_Backup\"
 $archiveFilePath2ndCopy = $archiveFileDir2ndCopy + $archivefile
 
@@ -117,6 +117,13 @@ $logFilePath = "C:\scripts\Log\Log_Email_Archive_$($archiveDate)_$($dateTime).lo
 
 $saveSearchLogMailbox = "Specify a different mailbox name here for saving log file of Search-Mailbox results"
 $saveSearchLogFolder = "Specify a different folder name Here for saving log file of Search-Mailbox results"
+
+# Tip: The above variables refer to TargetMailbox and TargetFolder from Search-Mailbox cmdlet respectively.
+#      Read the above Microsoft URL (definition of Search-Mailbox) for how to configure these two parameters.
+#
+#      If still unsure, for these two variables, you may specify '$saveSearchLogMailbox = administrator' and
+#      '$saveSearchLogFolder = SearchAndDeleteLog' where logs will be emailed to a to-be-created/existing folder
+#      named 'SearchAndDeleteLog' within the mailbox of 'administrator'.
 
 # --------------------------------------------------------------------
 #       4. DEFINING EMAIL VARIABLES FOR MAILING LOG AND RESULTS
@@ -242,7 +249,7 @@ else
 	Get-MailboxExportRequest -Name $archiveJobName | Get-MailboxExportRequestStatistics | fl | tee $logFilePath -Append
 	# Optional: Clean up (but Get-MailboxExportRequest will no longer return information of the previous job for troubleshooting; instead, check log file for troubleshooting)
 	# Get-MailboxExportRequest -Name $archiveJobName | Remove-MailboxExportRequest -confirm:$false
-	Send-MailMessage -From $emailSender -To $emailRecipient -Cc $emailCc -Subject $emailSubjectFailure -Body $emailBodyFailure -SmtpServer $emailServer -Attachments $emailAttachment
+	Send-MailMessage -From $emailSender -To $emailRecipient -Cc $emailCc -Bcc $emailBcc -Subject $emailSubjectFailure -Body $emailBodyFailure -SmtpServer $emailServer -Attachments $emailAttachment
 	Exit
 }
 
@@ -267,7 +274,7 @@ else
 	Write-Output "" | tee $logFilePath -Append
 	Write-Output "Second file copy verification failed." | tee $logFilePath -Append
 	Write-Output "" | tee $logFilePath -Append
-	Send-MailMessage -From $emailSender -To $emailRecipient -Cc $emailCc -Subject $emailSubjectFailure -Body $emailBodyFailure -SmtpServer $emailServer -Attachments $emailAttachment
+	Send-MailMessage -From $emailSender -To $emailRecipient -Cc $emailCc -Bcc $emailBcc -Subject $emailSubjectFailure -Body $emailBodyFailure -SmtpServer $emailServer -Attachments $emailAttachment
 	Exit
 }
 

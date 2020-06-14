@@ -60,7 +60,7 @@ Alternatively, start the .ps1 script using a .bat script:
 
 ## Word of Mouth
 
-Below is a kind comment left by an user of the script. (Thanks!)
+Below is a kind comment left by a user of the script. (Thanks!)
 
 - "We have some very large journaling mailboxes that we’ve been racking our brains trying to figure out what to do with to stop the sprawl. We’re on Exchange 2016 Standard, so we’re limited on our database count. This script has made it really easy for us to dig out emails by month and save them off to PST that we can store out on second tier storage for archive. Thanks for this!"
 
@@ -68,6 +68,7 @@ Below is a kind comment left by an user of the script. (Thanks!)
 
 | Ver | Date | Changes |
 | --- | --- | --- |
+| 1.3 | 20200614 | - Add missing bcc parameters in the first two lines of Send-MailMessage<br>- Change default setting of archiveEnable2ndCopy to false as it should not be commonly enabled<br>- Add a tip in the comment section of the script at part 3 to make it easier to configure the parameters |
 | 1.2 | 20171022 | - Turn journal mailbox name into a variable<br>- Further ensure New/Get-MailboxExportRequest job name uniqueness by naming it with current date time (in yyyyMMdd_hhmmsstt)<br>- Remove unused variables, scriptDir, startDateShort and endDateShort<br>- Improve script comments |
 | 1.1 | 20160712 | First public release |
 | 1.0 | 20160314 | First internal release |
