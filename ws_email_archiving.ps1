@@ -36,6 +36,7 @@ $startDate = $endDate.AddMonths(-1)
 # Get last day of last month in "yyyy_MM_dd" string
 # Name PST file using: specified string + last day of last month
 # Set file path from it for storing the first copy of PST file
+# (Grant Read/Write permission to the group Exchange Trusted Subsystem to the network share)
 
 # [Output Examples]
 # archiveDate = 2016_01_31
