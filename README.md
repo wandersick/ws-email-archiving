@@ -60,9 +60,10 @@ Alternatively, start the .ps1 script using a .bat script:
 
 ## Word of Mouth
 
-Below is a kind comment left by a user of the script. (Thanks!)
+Below are some of the kind [comments](https://tech.wandersick.com/2016/07/powershell-automation-of-journal.html#comments) left by users of the script. (Thanks!)
 
 - "We have some very large journaling mailboxes that we’ve been racking our brains trying to figure out what to do with to stop the sprawl. We’re on Exchange 2016 Standard, so we’re limited on our database count. This script has made it really easy for us to dig out emails by month and save them off to PST that we can store out on second tier storage for archive. Thanks for this!"
+- “I’ve used your script for a couple of years. It’s GREAT and do a GREAT job. Thank you very much!”
 
 ## Release History
 
